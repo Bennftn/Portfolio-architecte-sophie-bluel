@@ -29,13 +29,19 @@ fetch("http://localhost:5678/api/categories")
             filtersContainer.appendChild(button);
         });
 
-        // 👉 Attacher les événements juste après la création
+        // Attacher les événements juste après la création
         const allButtons = document.querySelectorAll(".filters button");
 
         allButtons.forEach(button => {
             button.addEventListener("click", () => {
                 const categoryId = parseInt(button.dataset.id);
                 console.log("Bouton cliqué : catégorie", categoryId);
+
+                //supprimer la calsse active de tous les boutons
+                allButtons.forEach(btn => btn.classList.remove("active"));
+
+                //ajout de la classe active au bouton cliqué
+                button.classList.add("active");
 
                 if (categoryId === 0) {
                     displayProjects(allProjects);
