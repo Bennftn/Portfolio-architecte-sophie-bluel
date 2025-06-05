@@ -213,3 +213,13 @@ footer nav ul {
 	background-color: #1D6154;
 	color: white;
 }
+
+/* css de la page de login*/
+
+body {
+	font-family: 'Work Sans', sans-serif;
+	background-color: #fef8f3;
+	margin: 0;
+	padding: 0;
+	color: #1D6154;
+}
