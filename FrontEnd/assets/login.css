@@ -107,6 +107,7 @@ main.login-page {
   margin-top: 20px;
 }
 
+
 .login-form button:hover {
     background-color: #144D43;
 }
@@ -123,6 +124,7 @@ main.login-page {
     text-decoration: underline;
     color: black;
 }
+
 
 footer {
     text-align: right;
@@ -141,3 +143,4 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
