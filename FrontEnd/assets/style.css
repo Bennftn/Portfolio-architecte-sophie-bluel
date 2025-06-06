@@ -214,12 +214,13 @@ footer nav ul {
 	color: white;
 }
 
-/* css de la page de login*/
+/* css du bouton login pour aller sur la page login */
 
-body {
-	font-family: 'Work Sans', sans-serif;
-	background-color: #fef8f3;
-	margin: 0;
-	padding: 0;
-	color: #1D6154;
+nav a {
+	text-decoration: none;
+	color: black;
+}
+
+nav a:hover {
+	color: #B1663C;
 }

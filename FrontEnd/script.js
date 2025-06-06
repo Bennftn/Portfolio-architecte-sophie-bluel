@@ -37,7 +37,7 @@ fetch("http://localhost:5678/api/categories")
                 const categoryId = parseInt(button.dataset.id);
                 console.log("Bouton cliqué : catégorie", categoryId);
 
-                //supprimer la calsse active de tous les boutons
+                //supprimer la classe active de tous les boutons
                 allButtons.forEach(btn => btn.classList.remove("active"));
 
                 //ajout de la classe active au bouton cliqué
