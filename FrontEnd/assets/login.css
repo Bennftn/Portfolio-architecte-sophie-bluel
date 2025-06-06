@@ -57,7 +57,7 @@ main.login-page {
     text-align: center;
 }
 
-.login-page h2 {
+#login-page h2 {
     font-size: 30px;
     margin-bottom: 40px;
     color: #1d6154;
@@ -65,21 +65,21 @@ main.login-page {
     text-underline-offset: 8px;
 }
 
-.login-form {
+#login-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
 }
 
-.login-form label {
+#login-form label {
     font-size: 14px;
     text-align: left;
     font-weight: bold;
     margin-top: 10px;
 }
 
-.login-form input {
+#login-form input {
   width: 100%;
   max-width: 379px;
   height: 51px;
@@ -92,7 +92,7 @@ main.login-page {
 }
 
 
-.login-form button {
+#login-form button {
   width: 100%;
   max-width: 379px;
   height: 51px;
@@ -108,11 +108,11 @@ main.login-page {
 }
 
 
-.login-form button:hover {
+#login-form button:hover {
     background-color: #144D43;
 }
 
-.login-form input, .login-form button {
+#login-form input, .login-form button {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
