@@ -13,6 +13,8 @@ if (token) {
     document.getElementById("login-link")?.classList.add("hidden");
 
     //ici on pourra ajouter les boutons "modifier"
+    const editButtons = document.querySelectorAll(".edit-button");
+    editButtons.forEach((btn) => btn.classList.remove("hidden"));
 }
 
 //fonction de logout

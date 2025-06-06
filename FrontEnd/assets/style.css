@@ -242,3 +242,37 @@ nav a:hover {
 .hidden {
 	display: none !important;
 }
+
+/* style css du bouton modifier */
+
+.edit-button {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: black;
+}
+
+.edit-button i {
+	font-size: 12px;
+}
+
+.portfolio-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.portfolio-header h2 {
+  text-align: center;
+  font-size: 30px;
+  color: #1D6154;
+  margin: 0;
+}
+
+.portfolio-wrapper {
+  display: flex;
+  justify-content: center;
+}
