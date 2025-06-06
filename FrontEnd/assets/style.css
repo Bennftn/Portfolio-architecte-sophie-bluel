@@ -224,3 +224,21 @@ nav a {
 nav a:hover {
 	color: #B1663C;
 }
+
+/* ajoute du style au bandeau admin */
+
+#admin-bar {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 14px;
+}
+
+#admin-bar i {
+	margin-right: 8px;
+}
+
+.hidden {
+	display: none !important;
+}

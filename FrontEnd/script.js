@@ -2,6 +2,25 @@ let allProjects = [];
 
 console.log("le fichier javascript fonctionne");
 
+//verifie si l'utilisateur est connecté 
+
+const token = localStorage.getItem("token");
+
+if (token) {
+    //affiche les elements admin
+    document.getElementById("admin-bar")?.classList.remove("hidden");
+    document.getElementById("logout-link")?.classList.remove("hidden");
+    document.getElementById("login-link")?.classList.add("hidden");
+
+    //ici on pourra ajouter les boutons "modifier"
+}
+
+//fonction de logout
+document.getElementById("logout-link")?.addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+});
+
 fetch("http://localhost:5678/api/works")
     .then(response => response.json())
     .then(data => {
