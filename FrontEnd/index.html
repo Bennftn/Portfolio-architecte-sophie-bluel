@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/add-photo.css">
 	<script src="script.js" defer></script>
 </head>
 <body>
@@ -120,5 +121,16 @@
 		</ul>
 	</nav>
 </footer>
+
+<div id="modal" class="modal hidden">
+	<div class="modal-content">
+		<span class="close">&times;</span>
+		<h2>Galerie photo</h2>
+		<div class="modal-gallery">
+			<!--Ici, s'afficherons dynamiquement les projets-->
+		</div>
+		<button class="add-photo-btn">Ajoiuter une photo</button>
+	</div>
+</div>
 </body>
 </html>
