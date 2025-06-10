@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/add-photo.css">
 	<script src="script.js" defer></script>
+	<script src="modals.js" defer></script>
 </head>
 <body>
 	<div id="admin-bar" class="hidden">
@@ -129,8 +130,43 @@
 		<div class="modal-gallery">
 			<!--Ici, s'afficherons dynamiquement les projets-->
 		</div>
-		<button class="add-photo-btn">Ajoiuter une photo</button>
+		<button  id="open-add-photo" class="add-photo-btn">Ajouter une photo</button>
 	</div>
 </div>
+
+<!-- Modale 2 : ajout photo (affiché a la place de la premiere lorsque l'on clique sur "Ajouter une photo")-->
+<div id="modal-add" class="modal hidden">
+	<div class="modal-content">
+		<span class="close">&times;</span>
+		<h2>Ajout photo</h2>
+
+		<form id="upload-form">
+			<!--Zone ajout de l'image-->
+			<div class="upload-zone">
+				<label for="image">
+					<i class="fa-regular fa-image fa-2xl"></i>
+					<p>+ Ajouter photo</p>
+					<p>jpg, png : 4moo max</p>
+				</label>
+				<input type="file" id="image" name="image" accept="image/jpeg, image/png" required hidden>
+				<div id="preview"></div>
+			</div>
+
+			<!--champ titre-->
+			<label for="title">Titre</label>
+			<input type="text" id="title" name="title" required>
+
+			<!--champ categorie-->
+			<label for="category">Catégorie</label>
+			<select id="category" name="category" required>
+				<!--Optiobs remplies dynamiquement avec l'API-->
+			</select>
+
+			<!--Bouton valider-->
+			<input type="submit" value="Valider">
+		</form>
+	</div>
+</div>
+
 </body>
 </html>
