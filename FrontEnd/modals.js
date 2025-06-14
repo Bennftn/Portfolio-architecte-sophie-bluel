@@ -1,3 +1,106 @@
+const modal = document.getElementById("modal");
+const closeBtn = document.querySelector(".close");
+const editBtn = document.querySelector(".edit-button");
+
+//ouvrir la modale
+
+editBtn.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    displayWorksInModals();
+});
+
+async function fetchWorks() {
+    try {
+        const res = await fetch("http://localhost:5678/api/works");
+        if (!res.ok) throw new Error("Impossible de récuperer le projets.");
+        return await res.json();
+    } catch (err) {
+        console.error("Erreur dans fetchWorks() :", err);
+        return [];
+    }
+}
+//fonction permettant d'afficher les projets sur le modale de base
+
+async function displayWorksInModals() {
+    const token = localStorage.getItem("token");
+    try {
+        const res = await fetch("http://localhost:5678/api/works", {
+            headers: {
+                Authorization : `Bearer ${token}`
+            }
+        });
+        const works = await res.json();
+
+        const modalGallery = document.querySelector(".modal-gallery");
+        modalGallery.innerHTML = ""
+
+        works.forEach(work => {
+            const figure = document.createElement("figure");
+            figure.classList.add("modal-figure");
+            figure.dataset.id = work.id;
+
+            const img = document.createElement("img");
+            img.src = work.imageUrl;
+            img.alt = work.title
+
+            const trash = document.createElement("i");
+            trash.classList.add("fa-solid", "fa-trash-can", "delete-icon");
+
+            // (optionnel) pour la suppresion plus tard
+            trash.addEventListener("click", async () => {
+                const confirmed = confirm("Voulez-vous vraiment supprimer cette photo ?");
+                if (!confirmed) return;
+
+                try {
+                    const res = await fetch(`http://localhost:5678/api/works/${work.id}`, {
+                        method: "DELETE",
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    });
+
+                    if (!res.ok) {
+                        const errorText = await res.text();
+                        throw new Error(`Erreur HTTP ${res.status} : ${errorText}`);
+                    }
+
+                    // suppression réussie : retirer le projet du DOM
+
+                    figure.remove();
+                    console.log(`Projet ID ${work.id} supprimé`);
+
+                    // met a jour la galerie principale
+                    const updateWorks = await fetchWorks();
+                    displayProjects(updateWorks);
+
+                } catch (err) {
+                    console.error("Erreur lors de la suppression :", err);
+                    alert("Erreur lors de la suppression : " + err.message);
+                }
+            });
+
+            figure.appendChild(img);
+            figure.appendChild(trash);
+            modalGallery.appendChild(figure);
+        });
+    } catch (err) {
+        console.error("Erreur lors du chargement des projets : ", err);
+    }
+}
+//fermer la modale en cliquant hors de la modale
+
+modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.classList.add("hidden");
+    }
+});
+
+// fermer la modale en cliquant sur la croix
+
+closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+});
+
 // navigation entre les deux modales
 
 const modalGallery = document.getElementById("modal");
@@ -80,7 +183,7 @@ form.addEventListener("submit", async (e) => {
 
         if (!res.ok) throw new Error("Erreur lors de l'envoi");
 
-        alert("Photoajoutée avec succès");
+        alert("Photo ajoutée avec succès");
         form.reset();
         preview.innerHTML = "";
         modalAdd.classList.add("hidden");

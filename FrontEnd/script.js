@@ -2,7 +2,7 @@ let allProjects = [];
 
 console.log("le fichier javascript fonctionne");
 
-//verifie si l'utilisateur est connecté 
+//verifie si l'utilisateur est connecté
 
 const token = localStorage.getItem("token");
 
@@ -103,27 +103,4 @@ if (localStorage.getItem("token")) {
   document.getElementById("admin-bar").classList.remove("hidden");
 }
 
-const modal = document.getElementById("modal");
-const closeBtn = document.querySelector(".close");
-const editBtn = document.querySelector(".edit-button");
-
-//ouvrir la modale
-
-editBtn.addEventListener("click", () => {
-    modal.classList.remove("hidden");
-});
-
-//fermer la modale en cliquant hors de la modale
-
-modal.addEventListener("click", (event) => {
-    if (event.target === modal) {
-        modal.classList.add("hidden");
-    }
-});
-
-// fermer la modale en cliquant sur la croix
-
-closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
-});
 
