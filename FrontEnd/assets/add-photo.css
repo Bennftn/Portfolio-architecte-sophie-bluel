@@ -150,44 +150,59 @@
 
 /* Zone bleue */
 .upload-zone {
+  width: 420px;
+  height: 169px;
   background-color: #e8f1f6;
   border-radius: 3px;
-  padding: 30px 0 20px 0;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 20px;
-  box-sizing: border-box;
+  margin: 0 auto 30px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* 👈 espace vertical entre chaque élément */
+  justify-content: center;
+  gap: 0px; /* 🔥 contrôle l’espace entre les 3 éléments */
+  box-sizing: border-box;
 }
+
 
 .upload-image i {
-  font-size: 60px;
+  width: 76px;
+  height: 76px;
+  font-size: 76px;
   color: #b9c5cc;
-  margin-bottom: 20px;
+  margin-top: 0;       /* descend légèrement l’image */
+  margin-bottom: 0px;   /* réduit l’espace avec le bouton */
 }
-
 .upload-button {
+  width: 173px;
+  height: 36px;
   background-color: #cbd6dc;
   color: #306685;
-  font-weight: 500;
+  font-family: 'Work Sans', sans-serif;
   font-size: 14px;
-  padding: 8px 26px;
-  border-radius: 30px;
+  font-weight: 500;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
   cursor: pointer;
+  position: relative;
 }
 
-.upload-button input {
+.upload-button input[type="file"] {
   display: none;
 }
 
 .file-info {
   font-size: 12px;
   color: #444;
+  text-align: center;
   margin: 0;
 }
+
+
+
 
 
 /* Formulaire */
@@ -197,6 +212,7 @@
   gap: 20px;
   max-width: 420px;
   margin: 0 auto;
+  width: 100%;
 }
 
 #upload-form label {
@@ -249,4 +265,15 @@
 
 #upload-form input[type="submit"].active:hover {
   background-color: #144a3f;
+}
+
+.back-button {
+  position: absolute;
+  top: 26px;
+  left: 30px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
 }
