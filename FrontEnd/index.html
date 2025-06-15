@@ -133,6 +133,7 @@
       <div class="modal-gallery">
         <!-- Les projets s'afficheront ici dynamiquement -->
       </div>
+	  <div class="form-divider-1"></div>
       <button id="open-add-photo" class="add-photo-btn">Ajouter une photo</button>
     </div>
   </div>
@@ -146,11 +147,10 @@
 
       <form id="upload-form">
         <!-- Zone d'ajout de l'image -->
-  <div class="upload-zone">
-  <div class="upload-image">
-    <i class="fa-regular fa-image fa-2xl"></i>
-  </div>
-
+  		<div class="upload-zone">
+  		<div class="upload-image">
+    	<i class="fa-regular fa-image fa-2xl"></i>
+  		</div>
   <label for="image" class="upload-button">
     + Ajouter photo
     <input type="file" id="image" name="image" hidden>
@@ -169,7 +169,8 @@
         <select id="category" name="category" required>
           <!-- Rempli dynamiquement -->
         </select>
-
+		<!-- Ajout du trait de séparation-->
+		 <div class="form-divider-2"></div>
         <!-- Bouton valider -->
         <input type="submit" value="Valider">
       </form>

@@ -159,18 +159,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0px; /* 🔥 contrôle l’espace entre les 3 éléments */
+  gap: 8px; /* 🔥 contrôle l’espace entre les 3 éléments */
   box-sizing: border-box;
 }
 
 
 .upload-image i {
+  position: relative;
+  top: 40px;
   width: 76px;
   height: 76px;
   font-size: 76px;
   color: #b9c5cc;
   margin-top: 0;       /* descend légèrement l’image */
-  margin-bottom: 0px;   /* réduit l’espace avec le bouton */
+  margin-bottom: -20px;
+  margin-left: -20px;
+  margin: 0;   /* réduit l’espace avec le bouton */
 }
 .upload-button {
   width: 173px;
@@ -185,10 +189,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 4px;
   cursor: pointer;
   position: relative;
+  z-index: 2;
 }
+
 
 .upload-button input[type="file"] {
   display: none;
@@ -276,4 +281,22 @@
   font-size: 20px;
   cursor: pointer;
   color: black;
+}
+
+.form-divider-1 {
+  width: 100%;
+  max-width: 420px;
+  height: 1px;
+  background-color: #b3b3b3;
+  margin: 10px auto 0;
+  margin-bottom: 30px;
+}
+
+.form-divider-2 {
+  width: 100%;
+  max-width: 420px;
+  height: 1px;
+  background-color: #b3b3b3;
+  margin: 10px auto 0;
+  margin-top: 20px;
 }
