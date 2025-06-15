@@ -101,6 +101,14 @@ closeBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
 });
 
+// revenir en arriere en cliquant sur la fleche dans la modale
+
+const btnBack = document.querySelector(".back-button");
+btnBack.addEventListener("click", () => {
+    modalAdd.classList.add("hidden");
+    modalGallery.classList.remove("hidden");
+})
+
 // navigation entre les deux modales
 
 const modalGallery = document.getElementById("modal");
@@ -135,6 +143,12 @@ closeBtns.forEach((btn) => {
 const imageInput = document.getElementById("image");
 const preview = document.getElementById("preview");
 
+//ecouteur pour activer le bouton valider
+
+imageInput.addEventListener("change", checkFormValidity);
+document.getElementById("title").addEventListener("input", checkFormValidity);
+document.getElementById("category").addEventListener("change", checkFormValidity);
+
 imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
     if (!file) return;
@@ -142,6 +156,10 @@ imageInput.addEventListener("change", () => {
     const reader = new FileReader();
     reader.onload = (e) => {
         preview.innerHTML = `<img src="${e.target.result}" alt="Aperçu" style="max-height: 150px">`;
+        //masque les elements initiaux dans la zone bleu
+        document.querySelector(".upload-zone").classList.add("preview-active");
+        //on verifie ici aussi au cas ou c'est le premier champ rempli
+        document.querySelector(".upload-zone").classList.add("preview-active");
     };
     reader.readAsDataURL(file);
 });
@@ -192,3 +210,21 @@ form.addEventListener("submit", async (e) => {
         alert("Erreur : " + error.message);
     }
 });
+
+function checkFormValidity() {
+    const imageLoaded = imageInput.files.length > 0;
+    const titleFilled = document.getElementById("title").value.trim() !== "";
+    const categorySelect = document.getElementById("category").value !== "";
+
+    const submitBtn = document.querySelector('#upload-form input[type="submit"]');
+
+    if (imageLoaded && titleFilled && categorySelect) {
+        submitBtn.classList.add("active");
+        submitBtn.disabled = false;
+        submitBtn.style.cursor = "pointer";
+    } else {
+        submitBtn.classList.remove("active");
+        submitBtn.disabled = true;
+        submitBtn.style.cursor = "not-allowed";
+    }
+}

@@ -148,15 +148,16 @@
       <form id="upload-form">
         <!-- Zone d'ajout de l'image -->
   		<div class="upload-zone">
-  		<div class="upload-image">
+  		<div class="upload-image to-hide-on-preview">
     	<i class="fa-regular fa-image fa-2xl"></i>
   		</div>
-  <label for="image" class="upload-button">
-    + Ajouter photo
-    <input type="file" id="image" name="image" hidden>
-  </label>
+  		<label for="image" class="upload-button to-hide-on-preview">
+    	+ Ajouter photo
+   	    <input type="file" id="image" name="image" hidden>
+  	</label>
 
-  <p class="file-info">jpg, png : 4mo max</p>
+  	<p class="file-info to-hide-on-preview">jpg, png : 4mo max</p>
+	<div id="preview"></div>
 </div>
 
 

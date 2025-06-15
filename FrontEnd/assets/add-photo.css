@@ -1,4 +1,4 @@
-/* === GÉNÉRAL : MODALES === */
+/*  GÉNÉRAL : MODALES  */
 .modal.hidden {
   display: none !important;
 }
@@ -45,7 +45,7 @@
   border: none;
 }
 
-/* === MODALE 1 : Galerie === */
+/*  MODALE 1 : Galerie  */
 .modal-gallery {
   display: grid;
   grid-template-columns: repeat(5, 76px);
@@ -100,7 +100,7 @@
   background-color: #144a3f;
 }
 
-/* === MODALE AJOUT PHOTO === */
+/*  MODALE AJOUT PHOTO  */
 
 .modal.hidden {
   display: none !important;
@@ -159,10 +159,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* 🔥 contrôle l’espace entre les 3 éléments */
+  gap: 8px;
   box-sizing: border-box;
 }
-
 
 .upload-image i {
   position: relative;
@@ -171,10 +170,10 @@
   height: 76px;
   font-size: 76px;
   color: #b9c5cc;
-  margin-top: 0;       /* descend légèrement l’image */
+  margin-top: 0;
   margin-bottom: -20px;
   margin-left: -20px;
-  margin: 0;   /* réduit l’espace avec le bouton */
+  margin: 0;
 }
 .upload-button {
   width: 173px;
@@ -194,7 +193,6 @@
   z-index: 2;
 }
 
-
 .upload-button input[type="file"] {
   display: none;
 }
@@ -205,10 +203,6 @@
   text-align: center;
   margin: 0;
 }
-
-
-
-
 
 /* Formulaire */
 #upload-form {
@@ -245,7 +239,6 @@
   -moz-appearance: none;
 }
 
-/* Bouton Valider désactivé */
 #upload-form input[type="submit"] {
   background-color: #A7A7A7;
   border: none;
@@ -262,7 +255,6 @@
   transition: background-color 0.3s ease;
 }
 
-/* Bouton Valider actif */
 #upload-form input[type="submit"].active {
   background-color: #1D6154;
   cursor: pointer;
@@ -299,4 +291,14 @@
   background-color: #b3b3b3;
   margin: 10px auto 0;
   margin-top: 20px;
+}
+
+.upload-zone.preview-active .to-hide-on-preview {
+  display: none;
+}
+
+#preview img {
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
 }
