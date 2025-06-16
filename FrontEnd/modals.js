@@ -146,6 +146,9 @@ fetch("http://localhost:5678/api/categories")
     .then((res) => res.json())
     .then((categories) => {
         const categorySelect = document.getElementById("category");
+        categorySelect.innerHTML = `
+        <option value="" disabled selected hidden>-- Choisissez une catégorie --</option>
+        `;
         categories.forEach((cat) => {
             const option = document.createElement("option");
             option.value = cat.id;

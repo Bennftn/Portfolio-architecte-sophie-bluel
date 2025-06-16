@@ -232,6 +232,10 @@
 }
 
 #upload-form select {
+  background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%227%22%20viewBox%3D%220%200%2010%207%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%200l5%207%205-7H0z%22%20fill%3D%22%233D3D3D%22/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-color: #f6f6f6;
+  background-size: 12px 7px;
+  padding-right: 30px; /* pour ne pas que le texte chevauche la flèche */
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
