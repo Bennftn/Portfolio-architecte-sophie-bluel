@@ -125,20 +125,17 @@
 
 <div class="modals-wrapper">
 
-  <!-- Modale 1 : Galerie -->
   <div id="modal" class="modal hidden">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Galerie photo</h2>
       <div class="modal-gallery">
-        <!-- Les projets s'afficheront ici dynamiquement -->
       </div>
 	  <div class="form-divider-1"></div>
       <button id="open-add-photo" class="add-photo-btn">Ajouter une photo</button>
     </div>
   </div>
 
-  <!-- Modale 2 : Ajout photo -->
   <div id="modal-add" class="modal hidden">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -146,7 +143,6 @@
       <h2 class="add-photo-title">Ajout photo</h2>
 
       <form id="upload-form">
-        <!-- Zone d'ajout de l'image -->
   		<div class="upload-zone">
   		<div class="upload-image to-hide-on-preview">
     	<i class="fa-regular fa-image fa-2xl"></i>
@@ -160,26 +156,17 @@
 	<div id="preview"></div>
 </div>
 
-
-        <!-- Champ titre -->
         <label for="title">Titre</label>
         <input type="text" id="title" name="title" placeholder="Titre" required>
 
-        <!-- Champ catégorie -->
         <label for="category">Catégorie</label>
         <select id="category" name="category" required>
-          <!-- Rempli dynamiquement -->
         </select>
-		<!-- Ajout du trait de séparation-->
-		 <div class="form-divider-2"></div>
-        <!-- Bouton valider -->
+		<div class="form-divider-2"></div>
         <input type="submit" value="Valider">
       </form>
     </div>
   </div>
-
 </div>
-
-
 </body>
 </html>

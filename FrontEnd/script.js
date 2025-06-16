@@ -1,23 +1,17 @@
 let allProjects = [];
 
-console.log("le fichier javascript fonctionne");
-
-//verifie si l'utilisateur est connecté
-
 const token = localStorage.getItem("token");
 
 if (token) {
-    //affiche les elements admin
+
     document.getElementById("admin-bar")?.classList.remove("hidden");
     document.getElementById("logout-link")?.classList.remove("hidden");
     document.getElementById("login-link")?.classList.add("hidden");
 
-    //ici on pourra ajouter les boutons "modifier"
     const editButtons = document.querySelectorAll(".edit-button");
     editButtons.forEach((btn) => btn.classList.remove("hidden"));
 }
 
-//fonction de logout
 document.getElementById("logout-link")?.addEventListener("click", () => {
     localStorage.removeItem("token");
     window.location.reload();
@@ -36,13 +30,11 @@ fetch("http://localhost:5678/api/categories")
     .then(categories => {
         const filtersContainer = document.querySelector(".filters");
 
-        // Créer le bouton "Tous"
         const allBtn = document.createElement("button");
         allBtn.textContent = "Tous";
         allBtn.dataset.id = 0;
         filtersContainer.appendChild(allBtn);
 
-        // Créer les boutons des catégories
         categories.forEach(category => {
             const button = document.createElement("button");
             button.textContent = category.name;
@@ -50,18 +42,12 @@ fetch("http://localhost:5678/api/categories")
             filtersContainer.appendChild(button);
         });
 
-        // Attacher les événements juste après la création
         const allButtons = document.querySelectorAll(".filters button");
 
         allButtons.forEach(button => {
             button.addEventListener("click", () => {
                 const categoryId = parseInt(button.dataset.id);
-                console.log("Bouton cliqué : catégorie", categoryId);
-
-                //supprimer la classe active de tous les boutons
                 allButtons.forEach(btn => btn.classList.remove("active"));
-
-                //ajout de la classe active au bouton cliqué
                 button.classList.add("active");
 
                 if (categoryId === 0) {

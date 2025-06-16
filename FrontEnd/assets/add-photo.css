@@ -80,7 +80,6 @@
   cursor: pointer;
 }
 
-/* Bouton Ajouter une photo */
 .add-photo-btn {
   display: block;
   margin: 0 auto;
@@ -148,7 +147,6 @@
   color: black;
 }
 
-/* Zone bleue */
 .upload-zone {
   width: 420px;
   height: 169px;
@@ -175,6 +173,7 @@
   margin-left: -20px;
   margin: 0;
 }
+
 .upload-button {
   width: 173px;
   height: 36px;
@@ -204,7 +203,6 @@
   margin: 0;
 }
 
-/* Formulaire */
 #upload-form {
   display: flex;
   flex-direction: column;

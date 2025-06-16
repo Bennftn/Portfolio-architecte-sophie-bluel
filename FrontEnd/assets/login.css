@@ -91,7 +91,6 @@ main.login-page {
   margin: 0 auto;
 }
 
-
 #login-form button {
   width: 100%;
   max-width: 379px;
@@ -107,7 +106,6 @@ main.login-page {
   margin-top: 20px;
 }
 
-
 #login-form button:hover {
     background-color: #144D43;
 }
@@ -117,6 +115,7 @@ main.login-page {
     max-width: 500px;
     margin: 0 auto;
 }
+
 .forgot {
     display: block;
     margin-top: 20px;
@@ -124,7 +123,6 @@ main.login-page {
     text-decoration: underline;
     color: black;
 }
-
 
 footer {
     text-align: right;

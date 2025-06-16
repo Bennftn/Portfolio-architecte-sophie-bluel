@@ -1,5 +1,3 @@
-console.log("la page js du login s'affiche bien");
-
 document.getElementById("login-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
