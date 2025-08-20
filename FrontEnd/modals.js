@@ -122,6 +122,26 @@ closeBtns.forEach((btn) => {
     });
 });
 
+const MAX_IMAGE_SIZE = 4 * 1024 * 1024;
+
+function isValidImageType(file) {
+    if (!file) return false;
+    return /image\/(png|jpeg)/.test(file.type) || /\.(png|jpe?g)$/i.test(file.name || "");
+}
+
+function validateSelectedFile(file) {
+    if (!file) return false;
+    if (!isValidImageType(file)) {
+        alert("Format invalide : PNG ou JPEG uniquement.");
+        return false;
+    }
+    if (file.size > MAX_IMAGE_SIZE) {
+        alert("L'image doit faire moins de 4 Mo maximum.");
+        return false;
+    }
+    return true
+}
+
 const imageInput = document.getElementById("image");
 const preview = document.getElementById("preview");
 
@@ -130,16 +150,31 @@ document.getElementById("title").addEventListener("input", checkFormValidity);
 document.getElementById("category").addEventListener("change", checkFormValidity);
 
 imageInput.addEventListener("change", () => {
-    const file = imageInput.files[0];
-    if (!file) return;
+  const file = imageInput.files[0];
+  const uploadZone = document.querySelector(".upload-zone");
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        preview.innerHTML = `<img src="${e.target.result}" alt="Aperçu" style="max-height: 150px">`;
-        document.querySelector(".upload-zone").classList.add("preview-active");
-        document.querySelector(".upload-zone").classList.add("preview-active");
-    };
-    reader.readAsDataURL(file);
+  if (!file) {
+    preview.innerHTML = "";
+    uploadZone?.classList.remove("preview-active");
+    checkFormValidity();
+    return;
+  }
+
+  if (!validateSelectedFile(file)) {
+    imageInput.value = "";
+    preview.innerHTML = "";
+    uploadZone?.classList.remove("preview-active");
+    checkFormValidity();
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    preview.innerHTML = `<img src="${e.target.result}" alt="Aperçu" style="max-height: 150px">`;
+    uploadZone?.classList.add("preview-active");
+    checkFormValidity();
+  };
+  reader.readAsDataURL(file);
 });
 
 fetch("http://localhost:5678/api/categories")
@@ -162,10 +197,14 @@ const form = document.getElementById("upload-form");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const file = imageInput.files[0];
+    const title = document.getElementById("title").value;
+    const category = document.getElementById("category").value;
+
     const formData = new FormData();
-    formData.append("image", imageInput.files[0]);
-    formData.append("title", document.getElementById("title").value);
-    formData.append("category", document.getElementById("category").value);
+    formData.append("image", file);
+    formData.append("title", title);
+    formData.append("category", category);
 
     const token = localStorage.getItem("token");
 
@@ -181,28 +220,36 @@ form.addEventListener("submit", async (e) => {
         if (!res.ok) throw new Error("Erreur lors de l'envoi");
 
         alert("Photo ajoutée avec succès");
+
         form.reset();
         preview.innerHTML = "";
         modalAdd.classList.add("hidden");
+
+        const updatedWorks = await fetchWorks();
+        displayProjects(updatedWorks);
+        await displayWorksInModals();
+
     } catch (error) {
         alert("Erreur : " + error.message);
     }
 });
 
 function checkFormValidity() {
-    const imageLoaded = imageInput.files.length > 0;
-    const titleFilled = document.getElementById("title").value.trim() !== "";
-    const categorySelect = document.getElementById("category").value !== "";
+  const file = imageInput.files[0];
+  const imageOk = !!file && isValidImageType(file) && file.size <= MAX_IMAGE_SIZE;
+  const titleFilled = document.getElementById("title").value.trim() !== "";
+  const categoryFilled = document.getElementById("category").value !== "";
 
-    const submitBtn = document.querySelector('#upload-form input[type="submit"]');
+  const submitBtn = document.querySelector('#upload-form input[type="submit"]');
+  const ok = imageOk && titleFilled && categoryFilled;
 
-    if (imageLoaded && titleFilled && categorySelect) {
-        submitBtn.classList.add("active");
-        submitBtn.disabled = false;
-        submitBtn.style.cursor = "pointer";
-    } else {
-        submitBtn.classList.remove("active");
-        submitBtn.disabled = true;
-        submitBtn.style.cursor = "not-allowed";
-    }
+  if (ok) {
+    submitBtn.classList.add("active");
+    submitBtn.disabled = false;
+    submitBtn.style.cursor = "pointer";
+  } else {
+    submitBtn.classList.remove("active");
+    submitBtn.disabled = true;
+    submitBtn.style.cursor = "not-allowed";
+  }
 }

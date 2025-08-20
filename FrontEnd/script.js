@@ -7,7 +7,7 @@ if (token) {
     document.getElementById("admin-bar")?.classList.remove("hidden");
     document.getElementById("logout-link")?.classList.remove("hidden");
     document.getElementById("login-link")?.classList.add("hidden");
-
+    document.querySelector(".filters")?.classList.add("hidden");
     const editButtons = document.querySelectorAll(".edit-button");
     editButtons.forEach((btn) => btn.classList.remove("hidden"));
 }
